@@ -17,8 +17,8 @@ this will create .pro file
 
 add in [projectfolder].pro file
 
-HEADERS += include/analogclock.h
-SOURCES += src/analogclock.cpp src/main.cpp
+HEADERS += include/*.h
+SOURCES += src/*.cpp
 DESTDIR += build/release
 
 OBJECTS_DIR = $$DESTDIR/.obj

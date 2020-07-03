@@ -52,11 +52,11 @@ OBJECTS_DIR   = build/release/.obj/
 
 ####### Files
 
-SOURCES       = src/analogclock.cpp \
-		src/main.cpp build/release/.moc/moc_analogclock.cpp
-OBJECTS       = build/release/.obj/analogclock.o \
-		build/release/.obj/main.o \
-		build/release/.obj/moc_analogclock.o
+SOURCES       = src/main.cpp \
+		src/rasterwindow.cpp build/release/.moc/moc_rasterwindow.cpp
+OBJECTS       = build/release/.obj/main.o \
+		build/release/.obj/rasterwindow.o \
+		build/release/.obj/moc_rasterwindow.o
 DIST          = /usr/local/Cellar/qt/5.15.0/mkspecs/features/spec_pre.prf \
 		/usr/local/Cellar/qt/5.15.0/mkspecs/qdevice.pri \
 		/usr/local/Cellar/qt/5.15.0/mkspecs/features/device_config.prf \
@@ -268,8 +268,8 @@ DIST          = /usr/local/Cellar/qt/5.15.0/mkspecs/features/spec_pre.prf \
 		/usr/local/Cellar/qt/5.15.0/mkspecs/features/exceptions.prf \
 		/usr/local/Cellar/qt/5.15.0/mkspecs/features/yacc.prf \
 		/usr/local/Cellar/qt/5.15.0/mkspecs/features/lex.prf \
-		simpleGUIQT.pro include/analogclock.h src/analogclock.cpp \
-		src/main.cpp
+		simpleGUIQT.pro include/rasterwindow.h src/main.cpp \
+		src/rasterwindow.cpp
 QMAKE_TARGET  = simpleGUIQT
 DESTDIR       = build/release/
 TARGET        = build/release/simpleGUIQT.app/Contents/MacOS/simpleGUIQT
@@ -751,8 +751,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/local/Cellar/qt/5.15.0/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/analogclock.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/analogclock.cpp src/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/rasterwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/main.cpp src/rasterwindow.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -787,10 +787,10 @@ compiler_moc_predefs_clean:
 build/release/.moc/moc_predefs.h: /usr/local/Cellar/qt/5.15.0/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.13 -Wall -Wextra -dM -E -o build/release/.moc/moc_predefs.h /usr/local/Cellar/qt/5.15.0/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: build/release/.moc/moc_analogclock.cpp
+compiler_moc_header_make_all: build/release/.moc/moc_rasterwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) build/release/.moc/moc_analogclock.cpp
-build/release/.moc/moc_analogclock.cpp: include/analogclock.h \
+	-$(DEL_FILE) build/release/.moc/moc_rasterwindow.cpp
+build/release/.moc/moc_rasterwindow.cpp: include/rasterwindow.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/QtGui \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiglobal.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
@@ -899,7 +899,7 @@ build/release/.moc/moc_analogclock.cpp: include/analogclock.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiversion.h \
 		build/release/.moc/moc_predefs.h \
 		/usr/local/Cellar/qt/5.15.0/bin/moc
-	/usr/local/Cellar/qt/5.15.0/bin/moc $(DEFINES) --include /Users/nightelf/GoogleDrive/GitHubProjects/CPP/simpleGUIQT/build/release/.moc/moc_predefs.h -I/usr/local/Cellar/qt/5.15.0/mkspecs/macx-clang -I/Users/nightelf/GoogleDrive/GitHubProjects/CPP/simpleGUIQT -I/Users/nightelf/GoogleDrive/GitHubProjects/CPP/simpleGUIQT -I/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/Cellar/qt/5.15.0/lib include/analogclock.h -o build/release/.moc/moc_analogclock.cpp
+	/usr/local/Cellar/qt/5.15.0/bin/moc $(DEFINES) --include /Users/nightelf/GoogleDrive/GitHubProjects/CPP/simpleGUIQT/build/release/.moc/moc_predefs.h -I/usr/local/Cellar/qt/5.15.0/mkspecs/macx-clang -I/Users/nightelf/GoogleDrive/GitHubProjects/CPP/simpleGUIQT -I/Users/nightelf/GoogleDrive/GitHubProjects/CPP/simpleGUIQT -I/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/Cellar/qt/5.15.0/lib include/rasterwindow.h -o build/release/.moc/moc_rasterwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -917,116 +917,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
-build/release/.obj/analogclock.o: src/analogclock.cpp include/analogclock.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/QtGui \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiglobal.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessible.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessiblebridge.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessibleobject.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessibleplugin.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qbackingstore.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qbitmap.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qbrush.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qclipboard.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcolor.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcolorspace.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcolortransform.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcursor.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qdesktopservices.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qdrag.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qevent.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfont.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfontdatabase.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfontinfo.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfontmetrics.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qgenericmatrix.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qgenericplugin.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qglyphrun.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qguiapplication.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qicon.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qiconengine.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qiconengineplugin.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimage.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimageiohandler.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimagereader.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimagewriter.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qinputmethod.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qkeysequence.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qmatrix.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qmatrix4x4.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qmovie.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qoffscreensurface.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengl.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglbuffer.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglcontext.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengldebug.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglextrafunctions.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglframebufferobject.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglfunctions.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglpaintdevice.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglpixeltransferoptions.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengltexture.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengltextureblitter.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengltimerquery.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglversionfunctions.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglwindow.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpagelayout.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpagesize.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpaintdevice.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpaintengine.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpainter.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpainterpath.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpalette.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpdfwriter.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpen.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpicture.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpictureformatplugin.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpixelformat.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpixmap.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpixmapcache.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpolygon.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qquaternion.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrasterwindow.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrawfont.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qregion.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrgb.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrgba64.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qscreen.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsessionmanager.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qstandarditemmodel.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qstatictext.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qstylehints.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsurface.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsurfaceformat.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextcursor.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextdocument.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextformat.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextlayout.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextlist.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextobject.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextoption.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtexttable.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtouchdevice.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtransform.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvalidator.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvector2d.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvector3d.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvector4d.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qwindow.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qwindowdefs.h \
-		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiversion.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/release/.obj/analogclock.o src/analogclock.cpp
-
-build/release/.obj/main.o: src/main.cpp include/analogclock.h \
+build/release/.obj/main.o: src/main.cpp include/rasterwindow.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/QtGui \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiglobal.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
@@ -1135,8 +1026,117 @@ build/release/.obj/main.o: src/main.cpp include/analogclock.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/release/.obj/main.o src/main.cpp
 
-build/release/.obj/moc_analogclock.o: build/release/.moc/moc_analogclock.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/release/.obj/moc_analogclock.o build/release/.moc/moc_analogclock.cpp
+build/release/.obj/rasterwindow.o: src/rasterwindow.cpp include/rasterwindow.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/QtGui \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiglobal.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessible.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessiblebridge.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessibleobject.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qaccessibleplugin.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qbackingstore.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qbitmap.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qbrush.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qclipboard.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcolor.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcolorspace.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcolortransform.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qcursor.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qdesktopservices.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qdrag.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfont.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfontdatabase.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfontinfo.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qfontmetrics.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qgenericmatrix.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qgenericplugin.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qglyphrun.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qguiapplication.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qicon.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qiconengine.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qiconengineplugin.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimage.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimageiohandler.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimagereader.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qimagewriter.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qinputmethod.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qkeysequence.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qmatrix.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qmovie.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qoffscreensurface.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengl.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglcontext.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengldebug.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglextrafunctions.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglframebufferobject.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglpaintdevice.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglpixeltransferoptions.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengltexture.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengltextureblitter.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopengltimerquery.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglversionfunctions.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qopenglwindow.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpagelayout.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpagesize.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpaintdevice.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpaintengine.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpainter.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpainterpath.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpalette.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpdfwriter.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpen.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpicture.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpictureformatplugin.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpixelformat.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpixmap.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpixmapcache.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qpolygon.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qquaternion.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrasterwindow.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrawfont.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qregion.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrgb.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qrgba64.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qscreen.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsessionmanager.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qstatictext.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qstylehints.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsurface.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsurfaceformat.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextcursor.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextdocument.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextformat.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextlayout.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextlist.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextobject.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtextoption.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtexttable.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtouchdevice.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtransform.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvalidator.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvector2d.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvector3d.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qvector4d.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qwindow.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qwindowdefs.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers/qtguiversion.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/release/.obj/rasterwindow.o src/rasterwindow.cpp
+
+build/release/.obj/moc_rasterwindow.o: build/release/.moc/moc_rasterwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/release/.obj/moc_rasterwindow.o build/release/.moc/moc_rasterwindow.cpp
 
 ####### Install
 

@@ -1,4 +1,4 @@
-#include "../include/analogclock.h"
+#include "../include/rasterwindow.h"
 
 //! [1]
 RasterWindow::RasterWindow(QWindow *parent)
