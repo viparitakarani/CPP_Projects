@@ -6,8 +6,6 @@ Install QT package for C++ in mac
 
 brew install qt
 
-brew install qr
-
 
 go to project file
 
