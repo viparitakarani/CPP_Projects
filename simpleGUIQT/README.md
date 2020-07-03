@@ -35,17 +35,11 @@ run>make
 
 Project File
 
-# C/C++ Simple Project
-This Project is a simple C/C++ Project, just to practice how to design the project folders, Makefile and how to build a C++ Project
-
-
 
 ## /build
-the place where we put the build file file object files .o and the excutable file 
+the place where we put the build file file object files .obj and the excutable file 
 ## /src
 the source code for the project *.c *.cpp *.hpp
-## /libs
-the third party library 
 ## /inlucdes
 the include files *.h
 ## Makefile

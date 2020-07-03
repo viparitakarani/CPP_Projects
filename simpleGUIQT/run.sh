@@ -1,1 +1,1 @@
-./build/main
+open -a simpleGUIQT build/release/
