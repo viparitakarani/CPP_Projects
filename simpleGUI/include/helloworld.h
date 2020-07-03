@@ -17,6 +17,7 @@ protected:
 
   //Member widgets:
   Gtk::Button m_button;
+
 };
 
 #endif
