@@ -4,6 +4,7 @@
 
 ExampleWindow::ExampleWindow()
 :
+  //inherit ExampleWindow with all of the object
   m_Frame_NotAccelerated("Not accelerated"),
   m_Frame_Accelerated("Accelerated"),
   m_VBox_Main(Gtk::ORIENTATION_VERTICAL, 5),
