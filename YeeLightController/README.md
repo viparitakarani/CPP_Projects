@@ -7,7 +7,7 @@ brew install qt
 
 go to project file
 
-##run qmake -project to create the .pro file
+## run qmake -project to create the .pro file
 /usr/local/Cellar/qt/5.15.0/bin/qmake -project
 
 Edit .pro file 
@@ -30,15 +30,15 @@ MOC_DIR = $$DESTDIR/.moc
 RCC_DIR = $$DESTDIR/.qrc
 UI_DIR = $$DESTDIR/.u
 
-##run below command to create Makefile 
+## run below command to create Makefile 
 usr/local/Cellar/qt/5.15.0/bin/qmake 
 or 
 /usr/local/Cellar/qt/5.15.0/bin/qmake -makefile
 
-##run below command to build the .app in folder $$DESTDIR
+## run below command to build the .app in folder $$DESTDIR
 make
 
-##run the apps
+## run the apps
 open -a YeeLightController build/release
 or
 debug apps
