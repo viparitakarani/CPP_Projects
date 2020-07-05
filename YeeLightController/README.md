@@ -1,7 +1,7 @@
 # C/C++ Yee Light Cpntroller GUI Project using QT5
 
 
-##Install QT package for C++ in mac
+## Install QT package for C++ in mac
 
 brew install qt
 
