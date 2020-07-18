@@ -1,6 +1,10 @@
-# Firebase Node JS project
-This project  tries to implement the SSE and OAut client and server  using nodejs and C++,
-to control the Yee Light Lamp. 
+# Yee Lamp Controller in C++
+Using Firebase Authenticaiton, Cloud Functions and Realtime Database to implement the OAuth and SEE Protocol, writen in C++/QT Library and Node JS
+to control Yee Light Lamp Device. 
+
+- Server is writen in NodeJS to handle the Auth server capabilities for login, generate Firebase auth token and token validation 
+- Client is wirten in C++/QT Library to handle as a SEE EventSource client when there is a suser publish new command in Firebase Realtime Database. Base on the command which is published this c++ client will send it to the Yee Lamp to control the Lamp Colour, Brightness, Power or Temperature
+
 
 
 # SSE Server
@@ -67,15 +71,16 @@ To test the end to End scenario we use 2 file, as the listerner and as the publi
 
 ## Run the SSE NodeJs Server 
 
-Run the server in local emulator, go to functions folder
+Run the server in local emulator or deploy it to the Firebase cloud, go to functions folder
 
-$firebase emulators:start
+$firebase emulators:start or firebase deploy --only functions
 
-## Run the SSE client listener 
+## Build the project usisng
+./buil.sh
 
-$./client/runcurlclientlistener.sh
+## Run the listenner 
+./runlistener.sh
 
-## Run the SSE client publisher 
-
-$./client/runcurlclientpublisher.sh
+## Send a command using
+./runpublisher.sh
 
